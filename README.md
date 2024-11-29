@@ -1,51 +1,41 @@
-# React + TypeScript + Vite
+# Pokédex with React Query
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Pokédex application demonstrating optimistic data fetching patterns using React Query (TanStack Query). This project showcases several advanced data fetching techniques:
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Optimistic Updates**: Uses React Query's `placeholderData` to show cached results while fetching new data
+- **Prefetching**: Implements two levels of prefetching:
+  - Next page of Pokemon list is prefetched when viewing current page
+  - Individual Pokemon details are prefetched on hover
+- **Infinite Scroll**: Paginated list of Pokemon with smooth transitions between pages
+- **Smooth UI**: Tailwind CSS styling with loading states and transitions
 
-## Expanding the ESLint configuration
+## Technical Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Built with React + TypeScript + Vite
+- Uses TanStack Query (React Query) for data management
+- Demonstrates advanced React Query patterns:
+  - Custom hooks for data fetching (`usePokemonList`, `usePokemonDetail`)
+  - Optimistic updates using `placeholderData`
+  - Strategic prefetching for improved UX
+  - Infinite stale time for list data
+  - Shorter stale time (10s) for individual Pokemon details
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Learn More
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# pokequery
+This project demonstrates best practices for data fetching in React applications:
+- How to implement optimistic updates
+- Effective prefetching strategies
+- Managing cache invalidation
+- Handling loading and error states
